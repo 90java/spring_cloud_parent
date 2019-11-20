@@ -12,6 +12,7 @@
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
+  <!--项目是基于springboot 所以此处引用springboot-start-parent  -->
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
@@ -19,13 +20,21 @@
     <relativePath/>
   </parent>
 
+  <!--版本属性集中控制（此处设置一个版本号，则依赖时可以使用${}去获取该版本值）-->
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
+    <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
   </properties>
 
   <dependencies>
+    <!--测试依赖-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -33,6 +42,20 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
 
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
