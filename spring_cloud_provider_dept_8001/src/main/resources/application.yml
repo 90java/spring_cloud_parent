@@ -1,0 +1,6 @@
+server:
+  port: 8001
+#对外暴露微服务名字
+spring:
+  application:
+    name: springcloud-dept

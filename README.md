@@ -19,5 +19,5 @@ go...
 **3.创建一个服务提供者**
     
     约定》配置》编码    
-    
+    spring_cloud_provider_dept_8001
     
