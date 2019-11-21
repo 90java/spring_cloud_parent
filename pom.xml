@@ -12,6 +12,7 @@
         <module>spring_cloud_api</module>
       <module>spring_cloud_provider_dept_8001</module>
       <module>spring_cloud_consumer_dept</module>
+      <module>spring_cloud_eureka_7001</module>
     </modules>
 
     <name>spring_cloud_parent</name>
@@ -90,8 +91,6 @@
         <artifactId>lombok</artifactId>
         <version>${lombok.version}</version>
       </dependency>
-
-
     </dependencies>
   </dependencyManagement>
 
