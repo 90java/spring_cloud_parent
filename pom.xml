@@ -6,9 +6,14 @@
 
   <groupId>com.nojava</groupId>
   <artifactId>spring_cloud_parent</artifactId>
-  <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>spring_cloud_api</module>
+      <module>spring_cloud_provider_dept_8001</module>
+    </modules>
 
-  <name>spring_cloud_parent</name>
+    <name>spring_cloud_parent</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -21,14 +26,26 @@
   </parent>
 
   <!--版本属性集中控制（此处设置一个版本号，则依赖时可以使用${}去获取该版本值）-->
+  <!-- 集中定义依赖版本号 -->
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
     <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
+    <junit.version>4.12</junit.version>
+    <druid.version>1.1.21</druid.version>
+    <lombok.version>1.18.8</lombok.version>
   </properties>
 
+  <!-- dependencies即使在子项目中不写该依赖项，那么子项目仍然会从父项目中继承该依赖项（全部继承）
+       dependencyManagement里只是声明依赖，并不实现引入，因此子项目需要显示的声明需要用的依赖。如果不在子项目中声明依赖，
+       是不会从父项目中继承下来的；只有在子项目中写了该依赖项，并且没有指定具体版本，才会从父项目中继承该项，
+       并且version和scope都读取自父pom;另外如果子项目中指定了版本号，那么会使用子项目中指定的jar版本。-->
+
+
+  <!-- 相对于dependencyManagement，所有生命在dependencies里的依赖都会自动引入，并默认被所有的子项目继承。 -->
   <dependencies>
+
     <!--测试依赖-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -38,12 +55,20 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
+      <version>${junit.version}</version>
     </dependency>
+
+    <!--数据库操作-->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+      <version>${druid.version}</version>
+    </dependency>
+
   </dependencies>
 
-
+  <!-- 只定义依赖的版本，并不实际依赖 -->
+  <!-- 统一管理项目的版本号，确保应用的各个项目的依赖和版本一致 注意和上面dependencies区别 -->
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -53,6 +78,14 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+
+      <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>${lombok.version}</version>
+      </dependency>
+
+
     </dependencies>
   </dependencyManagement>
 
