@@ -1,6 +1,7 @@
 # spring_cloud_parent
 这是一个开始学习spring cloud的练习项目，从零开始，在该项目上会继承各种框架。此文件记录学习过程。
 go...
+https://docs.spring.io/spring/docs/current/javadoc-api/
 ----------------------
 **1.从开始建项目开始学习**
     
@@ -20,4 +21,13 @@ go...
     
     约定》配置》编码    
     spring_cloud_provider_dept_8001
+    
+**4.创建一个消费端**
+    
+    spring_cloud_consumer_dept
+
+
+微服务化的核心就是将一站式应用，根据业务拆分成一个个的服务，彻底的去耦合，每一个微服务提供单个业务功能
+，一个服务做一件事，从技术角度看是一个小而独立的处理过程，能够自行单独启动或销毁，拥有自己独立的数据库。
+
     
