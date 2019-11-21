@@ -54,3 +54,13 @@ https://github.com/spring-projects/spring-cloud/wiki/Spring-Cloud-Edgware-Releas
     
 **7.服务注册eureka**
     
+    将服务入住到eureka 
+    修改pom文件 注意版本（请看最上方版本地址）
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            </dependency>
+    @EnableEurekaClient
+    
+    先启动eureka 服务端 在启动客户端
+     在客户端中spring.pplication.name 可以在eureka 页面上找到该实例名  页面上大写
