@@ -2,10 +2,7 @@ package com.nojava.controller;
 
 import com.nojava.Dept;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
@@ -40,5 +37,8 @@ public class Consumer_DeptController {
         return restTemplate.getForObject(REST_URL_PREFIX+"/dept/list",List.class);
     }
 
-
+    @RequestMapping(value = "/consumer/dept/discovery",method = RequestMethod.GET)
+    public Object discovery(){
+        return restTemplate.getForObject(REST_URL_PREFIX+"/dept/discovery",List.class);
+    }
 }

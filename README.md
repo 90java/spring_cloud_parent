@@ -126,4 +126,13 @@ https://github.com/spring-projects/spring-cloud/wiki/Spring-Cloud-Edgware-Releas
              3.yum 配置信息
                 注意如果获取mavne pom 信息注意 2配置中有$   所以.yml 取值配置为$xxx$
                             
-           
+**9.eureka 自我保护机制**
+    
+       微服务不与eureka 断开连接  可以能为网络原因， eureka 则会继续保留该微服务信息，而不是删除该信息。
+
+**10.服务发现**       
+
+        @Autowired
+        private DeptService deptService;
+        
+        @EnableDiscoveryClient 

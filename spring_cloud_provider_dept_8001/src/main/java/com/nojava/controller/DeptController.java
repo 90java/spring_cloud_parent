@@ -3,6 +3,8 @@ package com.nojava.controller;
 import com.nojava.Dept;
 import com.nojava.service.DeptService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,6 +35,19 @@ public class DeptController {
     @RequestMapping(value = "/dept/list",method = RequestMethod.GET)
     public List<Dept> findAll(){
         return deptService.findAll();
+    }
+
+    @Autowired
+    private DiscoveryClient discoveryClient;
+
+    @RequestMapping(value = "/dept/discovery",method = RequestMethod.GET)
+    public Object discovery(){
+        List<String> services = discoveryClient.getServices();
+
+        List<ServiceInstance> instances = discoveryClient.getInstances("SPRINGCLOUD-DEPT");
+
+
+        return instances;
     }
 
 
