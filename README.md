@@ -69,7 +69,8 @@ https://github.com/spring-projects/spring-cloud/wiki/Spring-Cloud-Edgware-Releas
     先启动eureka 服务端 在启动客户端
      在客户端中spring.pplication.name 可以在eureka 页面上找到该实例名  页面上大写
 
-**8.配置Spring Boot Actuator **     
+**8.配置Spring Boot Actuator**   
+
     参考：https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-endpoints
     
     优化项目
