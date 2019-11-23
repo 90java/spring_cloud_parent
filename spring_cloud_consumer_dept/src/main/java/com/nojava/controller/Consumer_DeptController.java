@@ -17,7 +17,10 @@ import java.util.List;
 @RestController
 public class Consumer_DeptController {
 
-    private static final String REST_URL_PREFIX = "http://127.0.0.1:8001";
+//    private static final String REST_URL_PREFIX = "http://127.0.0.1:8001";
+
+    //调用微服务 不适用ip端口 使用微服务名称
+    private static final String REST_URL_PREFIX = "http://springcloud-dept";
 
     @Autowired
     private RestTemplate restTemplate;

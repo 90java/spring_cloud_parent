@@ -47,6 +47,9 @@ https://github.com/spring-projects/spring-cloud/wiki/Spring-Cloud-Edgware-Releas
     用启动后，会向eureka service 发送心跳。如果eureka service在多个心跳内没有接收到某个节点的心跳默认30s，
     eureka service 会从服务注册表中把这个节点移除 默认90s
     
+    Spring Cloud Eureka 常用配置及说明
+    https://www.iteye.com/blog/glf2002lucky-2428874
+    
 **6.创建服务注册中心**
 
     spring_cloud_eureka_7001
@@ -138,6 +141,26 @@ https://github.com/spring-projects/spring-cloud/wiki/Spring-Cloud-Edgware-Releas
         
         @EnableDiscoveryClient
 
-**11eureka 集群**
+**11.eureka 集群**
+    
+
+**12 eureka 与zookeeper 区别**
+
+    eureka AP
+    zookeeper CP
+    
+    理解ACID  CAP （三选二）
+    
+    P （分区容错性）固定  因为我们集群在不同环境 所以必须
+    C 强一致性
+    A 可用性
+
+**13 spring cloud Ribbon** 
+
+    客户端负载均衡   
+    
+    引入相关pom依赖。 rabbit eureka (客户端   因为使用rabbit 要结合eureka) config  (同eureka)
+
+        
     
      

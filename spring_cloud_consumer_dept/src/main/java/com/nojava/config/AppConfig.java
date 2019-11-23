@@ -1,5 +1,6 @@
 package com.nojava.config;
 
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
@@ -21,6 +22,7 @@ public class AppConfig {
      * @return
      */
     @Bean(value = "restTemplate")
+    @LoadBalanced  //负载均衡
     public RestTemplate getRestTemplate(){
         return new RestTemplate();
     }

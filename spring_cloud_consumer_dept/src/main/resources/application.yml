@@ -1,2 +1,11 @@
 server:
   port: 80
+
+
+
+eureka:
+  client: #客户端注册进eureka服务列表中
+    service-url:
+      #efaultZone: http://localhost:7001/eureka #该地址在eureka 服务中暴露的 单机
+      defaultZone: http://localhost7001:7001/eureka,http://localhost7002:7002/eureka,http://localhost7003:7003/eureka #该地址在eureka 服务中暴露的 单机
+    #register-with-eureka: false  # 不注册自己
