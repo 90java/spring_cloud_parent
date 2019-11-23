@@ -50,6 +50,8 @@ https://github.com/spring-projects/spring-cloud/wiki/Spring-Cloud-Edgware-Releas
 **6.创建服务注册中心**
 
     spring_cloud_eureka_7001
+    添加pom依赖
+    添加application.yml
     启动访问http://127.0.0.1:7001/ 注册中心地址 如果出现spring Eureka 表示启动成功
     
 **7.服务注册eureka**
@@ -62,5 +64,66 @@ https://github.com/spring-projects/spring-cloud/wiki/Spring-Cloud-Edgware-Releas
             </dependency>
     @EnableEurekaClient
     
+    eureka.client.serviceUrl.defaultZone={eureka地址}
+    
     先启动eureka 服务端 在启动客户端
      在客户端中spring.pplication.name 可以在eureka 页面上找到该实例名  页面上大写
+
+**8.配置Spring Boot Actuator **     
+    参考：https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-endpoints
+    
+    优化项目
+        监控和管理Spring Boot应用，比如健康检查、审计、统计和HTTP追踪等。
+    使用：
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-actuator</artifactId>
+            </dependency>
+        </dependencies>
+     
+     配置注册微服务info信息
+        修改主机名名称：
+                 每个微服务地址都是ip：port  修改服务名称地址 可以起标识作用，类似修改为域名
+                 eureka:
+                   instance:
+                     instance-id: spring_cloud_dept8001 #修改服务名称
+         访问地址ip信息提示：    
+          eureka:
+            instance:        
+             prefer-ip-address: true      #访问路径显示ip地址 
+         配置info信息：
+            1.配置actuator pom
+            2.yum 中想获取mavenpom项目信息 可以通过在父pom文件中配置
+                  <build>
+                    <finalName>spring_cloud_parent</finalName>
+                    <resources>
+                      <resource>
+                        //表示这个目录下可以进行被maven操作
+                        <directory>src/main/resources</directory>
+                        <filtering>true</filtering>
+                      </resource>
+                    </resources>
+                
+                    <plugins>
+                      <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <configuration>
+                          <delimiters>
+                            <!--//表示取resources中以$*$的信息-->
+                            <delimiter>$</delimiter>
+                          </delimiters>
+                        </configuration>
+                      </plugin>
+                
+                      <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                      </plugin>
+                    </plugins>
+                  </build>
+             3.yum 配置信息
+                注意如果获取mavne pom 信息注意 2配置中有$   所以.yml 取值配置为$xxx$
+                            
+           

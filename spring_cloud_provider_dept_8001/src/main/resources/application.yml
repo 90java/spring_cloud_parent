@@ -8,4 +8,11 @@ eureka:
   client: #客户端注册进eureka服务列表中
     service-url:
       defaultZone: http://localhost:7001/eureka #该地址在eureka 服务中暴露的
-
+  instance:
+    instance-id: spring_cloud_dept8001 #修改服务名称
+    prefer-ip-address: true  #访问路径显示ip地址
+info:
+  app.name: spring_cloud
+  company.name: www.90java.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
