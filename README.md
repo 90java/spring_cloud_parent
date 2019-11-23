@@ -135,4 +135,8 @@ https://github.com/spring-projects/spring-cloud/wiki/Spring-Cloud-Edgware-Releas
         @Autowired
         private DeptService deptService;
         
-        @EnableDiscoveryClient 
+        @EnableDiscoveryClient
+
+**11eureka 集群**
+    
+     
