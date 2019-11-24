@@ -1,8 +1,7 @@
 package com.nojava.service;
 
-import com.nojava.Dept;
+import com.nojava.entities.Dept;
 import com.nojava.util.TestData;
-import org.junit.Test;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,7 +14,7 @@ import java.util.List;
  * Time: 20:56
  */
 @Service
-public class DeptServiceImpl implements DeptService{
+public class DeptServiceImpl implements DeptClientService {
 
     @Override
     public boolean add(Dept dept) {

@@ -1,6 +1,6 @@
 package com.nojava.util;
 
-import com.nojava.Dept;
+import com.nojava.entities.Dept;
 
 import java.util.ArrayList;
 import java.util.List;

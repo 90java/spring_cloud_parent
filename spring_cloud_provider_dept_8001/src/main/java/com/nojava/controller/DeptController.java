@@ -1,7 +1,7 @@
 package com.nojava.controller;
 
-import com.nojava.Dept;
-import com.nojava.service.DeptService;
+import com.nojava.entities.Dept;
+import com.nojava.service.DeptClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -20,7 +20,7 @@ import java.util.List;
 public class DeptController {
 
     @Autowired
-    private DeptService deptService;
+    private DeptClientService deptService;
 
     @RequestMapping(value = "/dept/add",method = RequestMethod.POST)
     public boolean add(@RequestBody Dept dept){

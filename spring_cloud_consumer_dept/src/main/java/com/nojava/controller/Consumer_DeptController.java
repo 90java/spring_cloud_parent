@@ -1,6 +1,6 @@
 package com.nojava.controller;
 
-import com.nojava.Dept;
+import com.nojava.entities.Dept;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;

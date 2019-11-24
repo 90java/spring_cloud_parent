@@ -211,4 +211,10 @@ https://github.com/spring-projects/spring-cloud/wiki/Spring-Cloud-Edgware-Releas
                 </dependency>
                 
          但是我想着还是配置了1.8的jdk 项目启动没问题。       
-                
+     1.2 feign  
+        nested exception is feign.FeignException: status 404 reading DeptClientServi
+        接口服务地址配错了 导致404了  地址从消费地址copy过来的  -_-||
+        
+        百度了一下：
+            如果出现这样错误，还有可能是参数问题， 因为@PathVariable 这种注解可能导致参数不同，所以有这种注解的也需要
+            加上，          

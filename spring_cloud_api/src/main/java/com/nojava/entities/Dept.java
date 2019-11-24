@@ -1,4 +1,4 @@
-package com.nojava;
+package com.nojava.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

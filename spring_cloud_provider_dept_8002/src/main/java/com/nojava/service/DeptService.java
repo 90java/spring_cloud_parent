@@ -1,6 +1,6 @@
 package com.nojava.service;
 
-import com.nojava.Dept;
+import com.nojava.entities.Dept;
 
 import java.util.List;
 
