@@ -17,6 +17,7 @@
       <module>spring_cloud_eureka_7003</module>
       <module>spring_cloud_provider_dept_8002</module>
       <module>spring_cloud_provider_dept_8003</module>
+        <module>spring_cloud_consumer_dept_feign</module>
     </modules>
 
     <name>spring_cloud_parent</name>

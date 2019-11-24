@@ -144,7 +144,7 @@ https://github.com/spring-projects/spring-cloud/wiki/Spring-Cloud-Edgware-Releas
 **11.eureka 集群**
     
 
-**12 eureka 与zookeeper 区别**
+**12.eureka 与zookeeper 区别**
 
     eureka AP
     zookeeper CP
@@ -155,12 +155,60 @@ https://github.com/spring-projects/spring-cloud/wiki/Spring-Cloud-Edgware-Releas
     C 强一致性
     A 可用性
 
-**13 spring cloud Ribbon** 
+**13.spring cloud Ribbon** 
 
     客户端负载均衡   
-    
     引入相关pom依赖。 rabbit eureka (客户端   因为使用rabbit 要结合eureka) config  (同eureka)
+    ribbon 软负载均衡客户端组件，
 
+    核心组件IRULE 负载均衡算法
         
+        com.myrule.MySelfRule
+        
+     Ribbon+RestTemplate 完成负载均衡   
+**14.Feign 负载均衡**        
     
-     
+    声明示web服务客户端
+    接口+注解
+    Feign 与Ribbon 区别
+    
+    使用过程：
+    
+-----
+**最后遇到的坑**
+    
+    1.1 idea启动不起来，我就下了最新版的idea
+       遇到问题： 首先要给项目配置jdk
+       项目本来是jdk1.8  新版的为11 我想着没事 用jdk11 启动项目报错。
+       java.lang.TypeNotPresentException: Type javax.xml.bind.JAXBContext not present
+       百度原因：
+        因为JAXB-API是java ee的一部分，在jdk9中没有在默认的类路径中；
+        java ee api在jdk中还是存在的，默认没有加载而已，jdk9中引入了模块的概念，可以使用
+        模块命令--add-modules java.xml.bind引入jaxb-api;
+        解决办法
+        https://blog.csdn.net/Alger_magic/article/details/83041811
+        
+        在你的POM 引入如下依赖。
+        <dependency>
+                    <groupId>javax.xml.bind</groupId>
+                    <artifactId>jaxb-api</artifactId>
+                    <version>2.3.0</version>
+                </dependency>
+                <dependency>
+                    <groupId>com.sun.xml.bind</groupId>
+                    <artifactId>jaxb-impl</artifactId>
+                    <version>2.3.0</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.glassfish.jaxb</groupId>
+                    <artifactId>jaxb-runtime</artifactId>
+                    <version>2.3.0</version>
+                </dependency>
+                <dependency>
+                    <groupId>javax.activation</groupId>
+                    <artifactId>activation</artifactId>
+                    <version>1.1.1</version>
+                </dependency>
+                
+         但是我想着还是配置了1.8的jdk 项目启动没问题。       
+                
