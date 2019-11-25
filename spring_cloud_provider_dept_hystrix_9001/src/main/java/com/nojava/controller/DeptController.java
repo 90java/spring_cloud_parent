@@ -30,7 +30,7 @@ public class DeptController {
 
     @RequestMapping(value = "/dept/get/{deptno}",method = RequestMethod.GET)
     //该注解表示一旦服务方法失败并抛出错误信息后，自动调用该注解内的fallbackMethod 调用类中的制定方法
-//    @HystrixCommand(fallbackMethod = "hystrix_get")
+    @HystrixCommand(fallbackMethod = "hystrix_get")
     public Dept findDeptByDeptno(@PathVariable Long deptno){
         Dept dept = deptService.findDeptByDeptno(deptno);
         if(dept==null){
@@ -39,14 +39,15 @@ public class DeptController {
         return dept;
     }
 
-//    public Dept hystrix_get(@PathVariable Long deptno){
-//        return new Dept().setDeptno(deptno).setDname("该id"+deptno+"没有对应的信息").setDb_source("no data");
-//    }
+    public Dept hystrix_get(@PathVariable Long deptno){
+        return new Dept().setDeptno(deptno).setDname("该id"+deptno+"没有对应的信息").setDb_source("no data");
+    }
 
 
 
     @RequestMapping(value = "/dept/list",method = RequestMethod.GET)
     public List<Dept> findAll(){
+
         return deptService.findAll();
     }
 

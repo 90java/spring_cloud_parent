@@ -200,6 +200,7 @@ https://github.com/spring-projects/spring-cloud/wiki/Spring-Cloud-Edgware-Releas
         准实时的调用监控
         对监控内容转换成可视化界面
     
+        参考：https://www.cnblogs.com/hejianjun/p/8670693.html
 -----
 **最后遇到的坑**
     
@@ -237,10 +238,26 @@ https://github.com/spring-projects/spring-cloud/wiki/Spring-Cloud-Edgware-Releas
                 </dependency>
                 
          但是我想着还是配置了1.8的jdk 项目启动没问题。       
-     1.2 feign  
+    1.2 feign  
         nested exception is feign.FeignException: status 404 reading DeptClientServi
         接口服务地址配错了 导致404了  地址从消费地址copy过来的  -_-||
         
         百度了一下：
             如果出现这样错误，还有可能是参数问题， 因为@PathVariable 这种注解可能导致参数不同，所以有这种注解的也需要
-            加上，          
+            加上，      
+            
+    1.3 http://hystrix-app:port/hystrix.stream 不起作用
+          spring boot2.0之后不提供hystrix.stream节点处理方法      
+          单体应用的监控 应该为 http://hystrix-app:port/actuator/hystrix.stream    Actuator 2.x 以后 endpoints 全部在/actuator下
+          
+          为服务实例添加 endpoint
+          在需要监控的微服务上加该配置信息
+          management:
+            endpoints:
+              web:
+                exposure:
+                  include: hystrix.stream
+    1.4   http://localhost:9001/actuator/hystrix.stream 一直在ping 没有显示。
+        导致 http://localhost:9002/hystrix/monitor 一直loding
+        
+        原因： 改监控只针对进行熔断的方法起作用 ，其他方法没有作用。 我还将@HystrixCommand 这个注释掉了 想测测服务降级。。搞了两个小时。          

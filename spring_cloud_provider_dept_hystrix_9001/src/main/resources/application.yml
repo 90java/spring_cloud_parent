@@ -1,5 +1,12 @@
 server:
   port: 9001
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+
 #对外暴露微服务名字
 spring:
   application:
@@ -18,3 +25,4 @@ info:
   company.name: www.90java.com
   build.artifactId: $project.artifactId$
   build.version: $project.version$
+
