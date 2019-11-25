@@ -173,6 +173,32 @@ https://github.com/spring-projects/spring-cloud/wiki/Spring-Cloud-Edgware-Releas
     Feign 与Ribbon 区别
     
     使用过程：
+
+**15.Hystrix 断路器（保险丝） **
+    
+    分布式系统面临的问题：服务雪崩
+    
+    Hystrix 用于分布式系统的延迟和容错的开源库。
+    
+    服务熔断：
+        应对雪崩效应的一种微服务链路保护机制。
+        
+        当扇出链路的某个服务器不可用，或者响应时间太长，会进行服务的降级， 进而熔断该节点的微服务的调用，快速返回错误响应信息
+        当检测到该微服务节点调用响应正常后恢复调用链路， 在springcloud 框架中熔断机制通过hystrix实现，hystrix会监控微服务间
+        调用的状况，当失败的调用到一定阈值，默认5s20次调用失败就会启动熔断机制，熔断机制的注解是@HystrixCommand。
+        
+       *针对的是服务端
+        
+        
+    服务降级：
+        降级处理是在客户端完成的，与服务端没有关系。    
+        
+        *针对的是客户端
+    Feign Hystrix支持
+            
+    hystrixdashboard
+        准实时的调用监控
+        对监控内容转换成可视化界面
     
 -----
 **最后遇到的坑**

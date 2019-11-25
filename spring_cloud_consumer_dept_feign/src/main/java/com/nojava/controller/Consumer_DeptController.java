@@ -21,14 +21,14 @@ public class Consumer_DeptController {
     private DeptClientService deptService;
 
 
-    @RequestMapping(value = "/consumer/dept/add",method = RequestMethod.GET)
+    @RequestMapping(value = "/consumer/dept/add",method = RequestMethod.POST)
     public boolean add(@RequestBody Dept dept){
         return deptService.add(dept);
     }
 
-    @RequestMapping(value = "/consumer/dept/get/{id}", method = RequestMethod.POST)
-    public Dept get(@PathVariable Long id){
-        return deptService.findDeptByDeptno(id);
+    @RequestMapping(value = "/consumer/dept/get/{deptno}", method = RequestMethod.GET)
+    public Dept get(@PathVariable Long deptno){
+        return deptService.findDeptByDeptno(deptno);
     }
 
     @RequestMapping(value = "/consumer/dept/list",method = RequestMethod.GET)

@@ -18,6 +18,8 @@
       <module>spring_cloud_provider_dept_8002</module>
       <module>spring_cloud_provider_dept_8003</module>
         <module>spring_cloud_consumer_dept_feign</module>
+        <module>spring_cloud_provider_dept_hystrix_9001</module>
+      <module>spring_cloud_consumer_hystrix_hashboard</module>
     </modules>
 
     <name>spring_cloud_parent</name>

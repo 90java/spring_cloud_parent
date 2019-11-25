@@ -9,16 +9,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
-@FeignClient(value = "SPRINGCLOUD-DEPT")
+//@FeignClient(value = "SPRINGCLOUD-DEPT")
+@FeignClient(value = "SPRINGCLOUD-DEPT",fallbackFactory = DeptClientServiceFallbackFactory.class)
 public interface DeptClientService {
 
-    @RequestMapping(value = "/dept/add",method = RequestMethod.GET)
+    @RequestMapping(value = "/dept/add",method = RequestMethod.POST)
     boolean add(@RequestBody Dept dept);
 
     @RequestMapping(value = "/dept/list",method = RequestMethod.GET)
     List<Dept> findAll();
 
-    @RequestMapping(value = "/dept/get/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/dept/get/{deptno}", method = RequestMethod.GET)
     Dept findDeptByDeptno(@PathVariable Long deptno);
 
 }

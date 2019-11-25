@@ -1,20 +1,20 @@
 server:
-  port: 80
-
-feign:
-  hystrix:
-    enabled: true
-
-
+  port: 9001
+#对外暴露微服务名字
+spring:
+  application:
+    name: springcloud-dept #非常重要 非常重要
 eureka:
   client: #客户端注册进eureka服务列表中
     service-url:
       #efaultZone: http://localhost:7001/eureka #该地址在eureka 服务中暴露的 单机
       defaultZone: http://localhost7001:7001/eureka,http://localhost7002:7002/eureka,http://localhost7003:7003/eureka #该地址在eureka 服务中暴露的 单机
-    #register-with-eureka: false  # 不注册自己
+
   instance:
-    instance-id: spring_cloud_consumer_dept_feign_80
+    instance-id: spring_cloud_hystrix_dept9001 #修改服务名称
     prefer-ip-address: true  #访问路径显示ip地址
-spring:
-  application:
-    name: springcloud-consumer-dept-feign
+info:
+  app.name: spring_cloud
+  company.name: www.90java.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
