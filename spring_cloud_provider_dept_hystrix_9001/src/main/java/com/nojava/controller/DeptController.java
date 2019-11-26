@@ -44,10 +44,9 @@ public class DeptController {
     }
 
 
-
+    @HystrixCommand
     @RequestMapping(value = "/dept/list",method = RequestMethod.GET)
     public List<Dept> findAll(){
-
         return deptService.findAll();
     }
 

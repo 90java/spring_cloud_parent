@@ -201,6 +201,19 @@ https://github.com/spring-projects/spring-cloud/wiki/Spring-Cloud-Edgware-Releas
         对监控内容转换成可视化界面
     
         参考：https://www.cnblogs.com/hejianjun/p/8670693.html
+        服务监控的就是就是熔断的方法，判断方法的调用记录，如果没有 @HystrixCommand 就监控不到。      
+        七色  
+            绿-成功   蓝-容断数  青-错误请求数   橙-超时数  紫-线程池拒绝数  红-失败/异常数  黑-错误数
+        host 服务请求频率
+        circuit closed 断路状态    
+            
+            
+        一圈
+            颜色标识实力的健康程度， 健康度 绿色-》黄色-》橙色-》红色 递减
+            大小根据实例的请求流量发生变化，流量越大实心圆越大， 所以根据实心圆的展示，快速发现故障实例和高压力实例。
+        一线
+            线的波动可以看出请求频率的变化，越高说明请求的越多。
+            记录2分钟内流量的相对变化，可以通过观察流量的上升和下降趋势。
 -----
 **最后遇到的坑**
     
@@ -259,5 +272,6 @@ https://github.com/spring-projects/spring-cloud/wiki/Spring-Cloud-Edgware-Releas
                   include: hystrix.stream
     1.4   http://localhost:9001/actuator/hystrix.stream 一直在ping 没有显示。
         导致 http://localhost:9002/hystrix/monitor 一直loding
-        
-        原因： 改监控只针对进行熔断的方法起作用 ，其他方法没有作用。 我还将@HystrixCommand 这个注释掉了 想测测服务降级。。搞了两个小时。          
+        原因： 改监控只针对进行熔断的方法起作用 ，其他方法没有作用。 我还将@HystrixCommand 这个注释掉了 想测测服务降级。。搞了两个小时。   
+
+               
