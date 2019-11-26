@@ -1,16 +1,9 @@
 server:
-  port: 9001
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: hystrix.stream
-
+  port: 10001
 #对外暴露微服务名字
 spring:
   application:
-    name: springcloud-dept #非常重要 非常重要
+    name: springcloud-zuul-gateway #非常重要 非常重要
 eureka:
   client: #客户端注册进eureka服务列表中
     service-url:
@@ -18,11 +11,17 @@ eureka:
       defaultZone: http://localhost7001:7001/eureka,http://localhost7002:7002/eureka,http://localhost7003:7003/eureka #该地址在eureka 服务中暴露的 单机
 
   instance:
-    instance-id: spring_cloud_hystrix_dept9001 #修改服务名称
-    prefer-ip-address: true  #访问路径显示真实ip地址
+    instance-id: spring_cloud_zuul_gateway10001 #修改服务名称
+    prefer-ip-address: true  #访问路径显示ip地址
 info:
   app.name: spring_cloud
   company.name: www.90java.com
   build.artifactId: $project.artifactId$
   build.version: $project.version$
-
+zuul:
+  ignoredServices: '*'  #忽略所有微服务
+  routes:
+    mydept:
+      path: /mydepts/**    #微服务
+      serviceId: springcloud-dept
+  prefix: /90java   #前缀

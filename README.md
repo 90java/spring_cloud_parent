@@ -214,6 +214,23 @@ https://github.com/spring-projects/spring-cloud/wiki/Spring-Cloud-Edgware-Releas
         一线
             线的波动可以看出请求频率的变化，越高说明请求的越多。
             记录2分钟内流量的相对变化，可以通过观察流量的上升和下降趋势。
+**16.zuul 路由网关**            
+        
+     作用：
+        路由：
+            负责将外部请求转发到具体的微服务实例上，是实现外部访问同一入口的基础。
+        过滤：   
+            负责对请求的处理过程进行处理。 是实现请求校验，服务聚合等功能。
+           请求        注册             获取
+       req-----zuul---------->eureka--------->mic      
+       
+       功能=代理+路由+过滤；
+     ----------
+      http://localhost:9001/dept/get/2 
+      --myzuul.com hosts 做过域名映射
+      http://myzuul.com:10001/springcloud-dept/dept/get/2 
+       
+            
 -----
 **最后遇到的坑**
     
