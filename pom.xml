@@ -21,6 +21,8 @@
         <module>spring_cloud_provider_dept_hystrix_9001</module>
       <module>spring_cloud_consumer_hystrix_hashboard</module>
         <module>spring_cloud_zuul_gateway_10001</module>
+        <module>spring_cloud_config_6001</module>
+      <module>spring_cloud_config_eureka_6100</module>
     </modules>
 
     <name>spring_cloud_parent</name>

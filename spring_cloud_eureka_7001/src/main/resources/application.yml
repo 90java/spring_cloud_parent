@@ -9,5 +9,9 @@ eureka:
     registerWithEureka: false #false 表示不想注册中心注册自己
     fetchRegistry: false       # false 表示自己端就是注册中心，我的职责就是i维护服务实例，不需要去检索服务
     service-url:
+      # 配置集群中其他Eureka Server节点的信息。如果需要配置多个节点，使用逗号','分割多个节点信息。
+      # 节点的信息格式为： http://地址:端口/eureka/  。 地址可以使用IP、域名、主机名定义。
+      # 使用HTTP Basic语法，提供安全认证中需要使用的用户名和密码。
+      # 语法是： http://用户名:密码@地址:端口/eureka/
       #defaultZone: http://${eureka.instance}:${server.port}/eureka/  #设置与eureka service交互的地址查询服务和注册服务都需要以来这个地址  单机
       defaultZone: http://localhost7002:7002/eureka/,http://localhost7003:7003/eureka/

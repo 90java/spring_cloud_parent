@@ -229,7 +229,23 @@ https://github.com/spring-projects/spring-cloud/wiki/Spring-Cloud-Edgware-Releas
       http://localhost:9001/dept/get/2 
       --myzuul.com hosts 做过域名映射
       http://myzuul.com:10001/springcloud-dept/dept/get/2 
-       
+**17.分布式配置配置spring cloud config**   
+    
+    注意远程文件为utf-8    utf-8   utf-8 
+    远程配置中心建议使用git
+    
+    结合远程github仓库
+    
+    1.创建远程仓库
+    2.本地上传文件
+    3.创建cloud_config 项目 
+        配置maven 
+        配置@EnableConfigServer
+        配置yml spring.cloud.config.server.git.uri   远程仓库地址
+        go...
+        
+    
+        
             
 -----
 **最后遇到的坑**

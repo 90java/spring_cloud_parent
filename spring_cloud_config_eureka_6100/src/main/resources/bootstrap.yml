@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    config:
+      name: application-config-client  # 从github读取资源名称
+      profile: test
+      label: master
+      uri: http://localhost:6001   #本微服务启动后找6001 服务 通过springcloudconfig获取github 服务地址

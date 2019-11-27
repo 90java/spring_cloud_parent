@@ -1,0 +1,11 @@
+server:
+  port: 6001
+#对外暴露微服务名字
+spring:
+  application:
+    name: springcloud-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/90java/spring_cloud_config.git #git 远程库地址
